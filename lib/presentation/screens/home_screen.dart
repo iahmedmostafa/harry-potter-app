@@ -66,13 +66,20 @@ class _HomeScreenState extends State<HomeScreen> {
         childAspectRatio: .75,
         crossAxisSpacing: 8,
       ),
-      itemCount: _searchedController!.text.isEmpty? allCharacter.length > 30 ? 30 : allCharacter.length:searchedResultList.length,
+      itemCount: _searchedController!.text.isEmpty
+          ? allCharacter.length > 30
+                ? 30
+                : allCharacter.length
+          : searchedResultList.length,
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       physics: const ClampingScrollPhysics(),
       itemBuilder: (context, index) {
         return CharacterItem(
-            characterModel:_searchedController!.text.isEmpty? allCharacter[index]:searchedResultList[index]);
+          characterModel: _searchedController!.text.isEmpty
+              ? allCharacter[index]
+              : searchedResultList[index],
+        );
       },
     );
   }
@@ -156,25 +163,69 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Widget buildAppBarTitle(){
-    return Text("Characters",
-    style: TextStyle(
-    fontWeight: FontWeight.normal,
-    fontSize: 25,
-    color: Colors.black,
-    fontFamily: "ComicNeue",
-    ),);
+  Widget buildAppBarTitle() {
+    return Text(
+      "Characters",
+      style: TextStyle(
+        fontWeight: FontWeight.normal,
+        fontSize: 25,
+        color: Colors.black,
+        fontFamily: "ComicNeue",
+      ),
+    );
+  }
+
+  Widget buildNoInternetWidget() {
+    return Container(
+      color: Colors.white,
+      child: Stack(
+        children: [
+          Center(
+            child: Image(
+              image: AssetImage("assets/images/no_internet.png"),
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: 300,
+            ),
+          ),
+          Positioned(
+            left: 30,
+            bottom: 200,
+            child: SizedBox(
+              child:
+                Text("Can't connect ❌ ...  Please check your internet "),
+
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: _isSearching? buildSearchField():buildAppBarTitle(),
+        title: _isSearching ? buildSearchField() : buildAppBarTitle(),
         backgroundColor: MyColors.myYellow,
         actions: _buildAppBarActions(),
       ),
-      body: buildBlocWidget(),
-      ) ;
+      body: OfflineBuilder(
+        connectivityBuilder:
+            (
+              BuildContext context,
+              List<ConnectivityResult> connectivity,
+              Widget child,
+            ) {
+              final bool connected = !connectivity.contains(ConnectivityResult.none,);
+              if (connected) {
+                return buildBlocWidget();
+              } else {
+                return buildNoInternetWidget();
+              }
+            },
+        child: showCircularIndicator(),
+      ),
+    );
   }
 }
