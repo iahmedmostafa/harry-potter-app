@@ -143,13 +143,13 @@ BlocProvider.of<CharacterCubit>(context).getAllQuotes();
                   children: [
                     buildCharacterInfo("Actor : ", character.actor!),
                     buildDivider(275),
-                    character.alternateNames == null
+                    character.alternateNames!.isEmpty
                         ? Container()
                         : buildCharacterInfo(
                             "Nick Names : ",
                             (character.alternateNames!.join('/')),
                           ),
-                    character.alternateNames == null
+                    character.alternateNames!.isEmpty
                         ? Container()
                         : buildDivider(230),
                     character.patronus!.isEmpty
