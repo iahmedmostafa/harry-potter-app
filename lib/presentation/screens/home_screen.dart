@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
     searchedResultList = allCharacter
         .where(
           (character) =>
-              character.name!.toLowerCase().startsWith(searchedCharacter),
+              character.name!.toLowerCase().startsWith(searchedCharacter.toLowerCase()),
         )
         .toList();
   }

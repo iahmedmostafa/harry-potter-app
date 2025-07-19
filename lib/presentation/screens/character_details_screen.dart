@@ -18,6 +18,7 @@ class CharacterDetailsScreen extends StatelessWidget {
       stretch: true,
       centerTitle: false,
       backgroundColor: MyColors.myGrey,
+      foregroundColor: MyColors.myWhite,
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
           character.name!,
