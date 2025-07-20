@@ -56,10 +56,10 @@ flutter run
 ![screenshot1](assets/screenshots/screenshot1.jpg)
 ![screenshot2](assets/screenshots/screenshot2.jpg)
 ![screenshot3](assets/screenshots/screenshot3.jpg)
-![screenshot1](assets/screenshots/screenshot4.jpg)
-![screenshot2](assets/screenshots/screenshot5.jpg)
-![screenshot3](assets/screenshots/screenshot7.jpg)
-![screenshot1](assets/screenshots/screenshot6.jpg)
+![screenshot4](assets/screenshots/screenshot4.jpg)
+![screenshot5](assets/screenshots/screenshot5.jpg)
+![screenshot7](assets/screenshots/screenshot7.jpg)
+![screenshot6](assets/screenshots/screenshot6.jpg)
 
 
 ## License:
