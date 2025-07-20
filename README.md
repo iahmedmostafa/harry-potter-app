@@ -42,7 +42,7 @@ It fetches Harry Potter characters and displays their details like name,patronus
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/harry_potter_characters.git
+git clone https://github.com/iahmedmostafa/harry_potter_characters.git
 cd harry_potter_characters
 
 # 2. Install dependencies
